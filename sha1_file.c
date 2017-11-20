@@ -3001,6 +3001,9 @@ int sha1_object_info_extended(const unsigned char *sha1, struct object_info *oi,
 			return 0;
 		}
 
+		if (is_null_sha1(sha1))
+			return -1;
+
 		/* Not a loose object; someone else may have just packed it. */
 		if (flags & OBJECT_INFO_QUICK) {
 			return -1;
